@@ -1,0 +1,14 @@
+<h2>Edit your profile</h2>
+
+<% form_for 'none', "/users", method: :put do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.label :email %>
+  <%= f.text_field :email %>
+
+  <p>
+    <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
+  </p>
+<% end %>
+
