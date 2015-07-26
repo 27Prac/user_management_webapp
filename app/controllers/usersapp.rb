@@ -7,7 +7,7 @@ UserManagementWebapp::App.controllers :usersapp do
 	end
 
 	get :redirecting, :map => "" do
-		redirect  url('http://localhost:3000/v1.0/oauth/authorize?client_id=8wwncodsjcajmmw1yutgnjc5kfmad7j&response_type=token&redirect_uri=localhost:3000',:Authorization => "test")
+		redirect  url('http://localhost:3000/v1.0/oauth/authorize?client_id=8wwncodsjcajmmw1yutgnjc5kfmad7j&response_type=token&redirect_uri=localhost:3001',:Authorization => "test")
 	end
 
 	get :new, :map => "/register" do

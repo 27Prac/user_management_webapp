@@ -1,0 +1,24 @@
+=User Interface
+
+- Go to localhost:3001 and you can create, login , logout , update a user etc.
+
+=Set Up
+-Install padrino gem
+     gem install padrino
+- Clone the project:
+     git clone -b second_release git@github.com:27Prac/user_management.git
+     git clone -b first_release git@github.com:27Prac/user_management_webapp.git
+
+- cd to the both the project and bundle
+
+- Start padrino
+    Running 'user_management'  ->  `padrino start`
+    Running 'user_management_webapp' -> `padrino start -p 3001`
+
+Additional link
+   - Readme for 'user_management' repo -
+   - API Reference for 'user_management' repo -
+   - Read me for 'user_management_app' repo -
+
+
+

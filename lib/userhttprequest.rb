@@ -53,6 +53,7 @@ class UserHttpReqeust
 	def perform_request
 		# If this is set within the begin block, it will reset 'retries' with every retry
 		sleep_sec = 1
+		retries = 3
 		begin
 			# Can we check if configuration is a valid object of class OzRequestConfiguration?
 			url = "localhost:3000/v1.0"+path
@@ -76,10 +77,6 @@ class UserHttpReqeust
 			end
 
 			response = UserHTTPResponse.new(curl_instance)
-			#configuration.config_response(response)
-
-			#raise OzRequest::Request5xxException.new(response) if response.code.to_s =~ /^5[0-9]{2}/
-
 			response
 		rescue NotImplementedError => e
 			raise e
@@ -90,9 +87,6 @@ class UserHttpReqeust
 				sleep_sec *= 2
 				retry
 			end
-
-			# If we have a real 500, return it to the caller instead of raising an exception
-			return e.response if e.class == OzRequest::Request5xxException
 			raise e
 		rescue Exception => e
 			raise configuration.api_error_class.new({exception: e.inspect})
@@ -100,14 +94,6 @@ class UserHttpReqeust
 	end
 
 	private
-	def build_path_with_query
-		res_url = "#{configuration.base_url}#{path}"
-		query = OzRequest.url_encode_params(req_params,"&",true)
-		separator = res_url.index('?') ? '&' : '?'
-		res_url += separator + query if query.length > 0
-		res_url
-	end
-
 	class << self
 		def get(path, params=nil, hdrs=nil, config=nil)
 			request = UserHttpReqeust.new(:get, path, params, hdrs, nil, config)
