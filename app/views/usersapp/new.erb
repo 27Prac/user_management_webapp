@@ -2,7 +2,7 @@
 
 Register Yourself:
 
-<% form_for('none', '/users/create') do |f| %>
+<% form_for(:user, '/users/create') do |f| %>
     <%= f.label :name %>
     <%= f.text_field :name %>
 
