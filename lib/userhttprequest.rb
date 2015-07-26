@@ -89,7 +89,7 @@ class UserHttpReqeust
 			end
 			raise e
 		rescue Exception => e
-			raise configuration.api_error_class.new({exception: e.inspect})
+			raise {"Upstream Error"}
 		end
 	end
 
